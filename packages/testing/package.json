@@ -1,0 +1,32 @@
+{
+  "name": "@flux/testing",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@flux/db": "workspace:*",
+    "@flux/shared": "workspace:*",
+    "drizzle-orm": "^0.38.3",
+    "embedded-postgres": "18.4.0-beta.17",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2"
+  }
+}

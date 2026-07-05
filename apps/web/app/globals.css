@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  @apply bg-void font-sans text-ink antialiased;
+  background-image: theme("backgroundImage.studio-radial");
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* Recessive, glossy scrollbars for the studio look */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@layer components {
+  .glass {
+    @apply relative rounded-2xl border border-edge bg-panel/60 backdrop-blur-xl shadow-panel;
+    background-image: theme("backgroundImage.glass");
+  }
+  .glass-hover {
+    @apply transition-colors duration-200 hover:border-white/15 hover:bg-panel/80;
+  }
+  .card-title {
+    @apply text-xs font-semibold uppercase tracking-[0.14em] text-ink-muted;
+  }
+  .stat-value {
+    @apply font-mono text-2xl font-semibold tabular-nums text-ink;
+  }
+  .focus-ring {
+    @apply outline-none ring-offset-0 focus-visible:ring-2 focus-visible:ring-amber/60;
+  }
+  /* Skeleton shimmer used by the 2D scene fallback */
+  .skeleton {
+    @apply relative overflow-hidden bg-white/5;
+  }
+  .skeleton::after {
+    content: "";
+    @apply absolute inset-0 -translate-x-full animate-shimmer;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.06),
+      transparent
+    );
+  }
+}
+
+/* Respect reduced motion globally as a safety net */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

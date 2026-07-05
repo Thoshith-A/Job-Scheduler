@@ -1,0 +1,14 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+
+# Approve build scripts for the (trusted) native/binary dependencies we rely on.
+allowBuilds:
+  esbuild: true
+  argon2: true
+  "@swc/core": true
+  "@embedded-postgres/darwin-arm64": true
+  "@embedded-postgres/darwin-x64": true
+  "@embedded-postgres/linux-arm64": true
+  "@embedded-postgres/linux-x64": true
+  "@embedded-postgres/windows-x64": true

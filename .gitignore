@@ -1,0 +1,41 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build output
+dist/
+build/
+.next/
+out/
+*.tsbuildinfo
+
+# turbo
+.turbo/
+
+# env & secrets
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# logs
+*.log
+logs/
+npm-debug.log*
+pnpm-debug.log*
+
+# test / coverage
+coverage/
+.vitest/
+
+# embedded postgres data dirs (local, no-docker path)
+.pgdata/
+.local-pg/
+*.pg-data/
+
+# editor / os
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
